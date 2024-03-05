@@ -1,26 +1,21 @@
 import React, {useEffect} from 'react';
 import {View, Text, Button} from 'react-native';
 
-const HomeScreen = ({route, navigation}) => {
-  useEffect(() => {
-    if (route.params?.post) {
-      // Post updated, do something with `route.params.post`
-      // For example, send the post to the server
-    }
-  }, [route.params?.post]);
-
+const HomeScreen = ({navigation}) => {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Home Screen</Text>
       <Button
-        title="Create post"
-        onPress={() => navigation.navigate('CreatePost')}
+        title="Go to Settings"
+        onPress={() =>
+          navigation.navigate('Root', {
+            screen: 'Settings',
+            params: {
+              user: 'jane',
+            },
+          })
+        }
       />
-      <Text
-        style={{
-          margin: 10,
-        }}>
-        Post: {route.params?.post}
-      </Text>
     </View>
   );
 };
