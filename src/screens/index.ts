@@ -9,6 +9,7 @@ import DetailsScreen from './DetailsScreen/DetailsScreen';
 import FeedScreen from './Feed/FeedScreen';
 import MessagesScreen from './Messages/MessagesScreen';
 import EmptyScreen from './Empty/EmptyScreen';
+import HelpScreen from './Help/HelpScreen';
 
 export {
   HomeScreen,
@@ -22,4 +23,5 @@ export {
   FeedScreen,
   MessagesScreen,
   EmptyScreen,
+  HelpScreen,
 };

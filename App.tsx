@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   EmptyScreen,
   FeedScreen,
+  HelpScreen,
   HomeScreen,
   ProfileScreen,
   SettingsScreen,
@@ -13,14 +14,31 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  const isLoggedIn = true;
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="EditPost" component={EmptyScreen} />
+      <Stack.Navigator>
+        {!isLoggedIn ? (
+          // Screens for logged in users
+          <Stack.Group>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Profile" component={EmptyScreen} />
+          </Stack.Group>
+        ) : (
+          // Auth screens
+          <Stack.Group screenOptions={{headerShown: false}}>
+            <Stack.Screen name="SignIn" component={EmptyScreen} />
+            <Stack.Screen name="SignUp" component={EmptyScreen} />
+          </Stack.Group>
+        )}
+        {/* Common modal screens */}
+        <Stack.Group
+          screenOptions={{
+            presentation: 'modal',
+          }}>
+          <Stack.Screen name="Help" component={HelpScreen} />
+          <Stack.Screen name="Invite" component={EmptyScreen} />
+        </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
   );

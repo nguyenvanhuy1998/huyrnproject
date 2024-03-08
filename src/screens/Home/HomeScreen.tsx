@@ -1,19 +1,16 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {Button, Text, View} from 'react-native';
-import ProfileScreen from '../Profile/ProfileScreen';
-import EmptyScreen from '../Empty/EmptyScreen';
 
-const Tab = createBottomTabNavigator();
 const HomeScreen = ({navigation}) => {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}>
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="Settings" component={EmptyScreen} />
-    </Tab.Navigator>
+    <View>
+      <Text>Home Screen</Text>
+      <Button onPress={() => navigation.navigate('Help')} title="Go to Help" />
+      <Button
+        title="Go to Profile"
+        onPress={() => navigation.navigate('Profile')}
+      />
+    </View>
   );
 };
 
