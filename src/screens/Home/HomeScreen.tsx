@@ -7,7 +7,10 @@ import EmptyScreen from '../Empty/EmptyScreen';
 const Tab = createBottomTabNavigator();
 const HomeScreen = ({navigation}) => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="Settings" component={EmptyScreen} />
     </Tab.Navigator>
