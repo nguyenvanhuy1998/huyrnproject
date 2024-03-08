@@ -5,6 +5,7 @@ import SupportScreen from './Support/SupportScreen';
 import CreatePostScreen from './CreatePost/CreatePostScreen';
 import ProfileScreen from './Profile/ProfileScreen';
 import SettingsScreen from './Settings/SettingsScreen';
+import DetailsScreen from './DetailsScreen/DetailsScreen';
 
 export {
   HomeScreen,
@@ -14,4 +15,5 @@ export {
   CreatePostScreen,
   ProfileScreen,
   SettingsScreen,
+  DetailsScreen,
 };
