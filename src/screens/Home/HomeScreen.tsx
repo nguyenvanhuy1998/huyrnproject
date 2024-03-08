@@ -5,7 +5,17 @@ const HomeScreen = ({navigation}) => {
   return (
     <View>
       <Text>Home Screen</Text>
-      <Button title="Go to Feed" onPress={() => navigation.navigate('Feed')} />
+      <Button
+        title="Go to Settings"
+        onPress={() =>
+          navigation.navigate('Root', {
+            screen: 'Settings',
+            params: {
+              user: 'jane',
+            },
+          })
+        }
+      />
     </View>
   );
 };

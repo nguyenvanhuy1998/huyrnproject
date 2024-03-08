@@ -15,26 +15,19 @@ const Drawer = createDrawerNavigator();
 
 const Root = () => {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={HomeScreen} />
-      <Drawer.Screen name="Profile" component={EmptyScreen} />
-      <Stack.Screen name="Settings" component={EmptyScreen} />
-    </Drawer.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
+    </Stack.Navigator>
   );
 };
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Root"
-          component={Root}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen name="Feed" component={FeedScreen} />
-      </Stack.Navigator>
+      <Drawer.Navigator initialRouteName="Root">
+        <Drawer.Screen name="Root" component={Root} />
+        <Drawer.Screen name="Home" component={HomeScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
