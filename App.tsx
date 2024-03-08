@@ -11,23 +11,20 @@ import {
 } from './src/screens';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 const Stack = createNativeStackNavigator();
-const Drawer = createDrawerNavigator();
 
-const Root = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Profile" component={ProfileScreen} />
-      <Stack.Screen name="Settings" component={SettingsScreen} />
-    </Stack.Navigator>
-  );
-};
 const App = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Root">
-        <Drawer.Screen name="Root" component={Root} />
-        <Drawer.Screen name="Home" component={HomeScreen} />
-      </Drawer.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen name="EditPost" component={EmptyScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
