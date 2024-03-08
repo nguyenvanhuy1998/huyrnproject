@@ -1,10 +1,20 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {View, Text, Button} from 'react-native';
+import React, {useEffect} from 'react';
 
-const MessagesScreen = () => {
+const MessagesScreen = ({navigation}) => {
+  useEffect(() => {
+    const unsubscribe = navigation.getParent().addListener('tabPress', e => {
+      // Do something
+      alert('Tab pressed!');
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
   return (
     <View>
       <Text>MessagesScreen</Text>
+      <Button title="Go to Feed" onPress={() => navigation.navigate('Feed')} />
     </View>
   );
 };
