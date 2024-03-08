@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, Button} from 'react-native';
+import React from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import FeedScreen from '../Feed/FeedScreen';
+import MessagesScreen from '../Messages/MessagesScreen';
 
+const Tab = createBottomTabNavigator();
 const HomeScreen = ({navigation}) => {
   return (
-    <View>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
+    <Tab.Navigator>
+      <Tab.Screen name="Feed" component={FeedScreen} />
+      <Tab.Screen name="Messages" component={MessagesScreen} />
+    </Tab.Navigator>
   );
 };
 

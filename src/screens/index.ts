@@ -6,6 +6,8 @@ import CreatePostScreen from './CreatePost/CreatePostScreen';
 import ProfileScreen from './Profile/ProfileScreen';
 import SettingsScreen from './Settings/SettingsScreen';
 import DetailsScreen from './DetailsScreen/DetailsScreen';
+import FeedScreen from './Feed/FeedScreen';
+import MessagesScreen from './Messages/MessagesScreen';
 
 export {
   HomeScreen,
@@ -16,4 +18,6 @@ export {
   ProfileScreen,
   SettingsScreen,
   DetailsScreen,
+  FeedScreen,
+  MessagesScreen,
 };
