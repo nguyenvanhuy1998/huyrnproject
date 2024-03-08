@@ -1,12 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from 'react-native';
 
 const HomeScreen = ({navigation}) => {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
-    </View>
-  );
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Button title="Update count" onPress={() => setCount(c => c + 1)} />
+      ),
+    });
+  }, [navigation, setCount]);
+
+  return <Text>Count: {count}</Text>;
 };
 
 export default HomeScreen;

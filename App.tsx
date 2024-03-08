@@ -18,13 +18,7 @@ const App = () => {
           component={HomeScreen}
           options={{
             headerTitle: props => <LogoTitle {...props} />,
-            headerRight: () => (
-              <Button
-                title="Info"
-                color={'#00cc00'}
-                onPress={() => alert('This is a button')}
-              />
-            ),
+            headerRight: () => <Button title="Update count" />,
           }}
         />
       </Stack.Navigator>
