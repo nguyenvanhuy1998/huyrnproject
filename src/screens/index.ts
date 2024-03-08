@@ -8,6 +8,7 @@ import SettingsScreen from './Settings/SettingsScreen';
 import DetailsScreen from './DetailsScreen/DetailsScreen';
 import FeedScreen from './Feed/FeedScreen';
 import MessagesScreen from './Messages/MessagesScreen';
+import EmptyScreen from './Empty/EmptyScreen';
 
 export {
   HomeScreen,
@@ -20,4 +21,5 @@ export {
   DetailsScreen,
   FeedScreen,
   MessagesScreen,
+  EmptyScreen,
 };

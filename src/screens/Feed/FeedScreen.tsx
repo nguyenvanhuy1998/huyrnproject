@@ -5,9 +5,10 @@ const FeedScreen = ({navigation}) => {
   return (
     <View>
       <Text>FeedScreen</Text>
+      <Button title="Go to Root" onPress={() => navigation.navigate('Root')} />
       <Button
-        title="Go to Messages"
-        onPress={() => navigation.navigate('Messages')}
+        title="Go to Root, Profile"
+        onPress={() => navigation.navigate('Root', {screen: 'Profile'})}
       />
     </View>
   );
