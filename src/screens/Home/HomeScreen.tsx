@@ -6,9 +6,11 @@ const HomeScreen = ({navigation}) => {
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Home Screen</Text>
       <Button
-        title="Go to Profile"
+        title="Update the title"
         onPress={() => {
-          navigation.navigate('Profile', {name: 'Custom profile header'});
+          navigation.setOptions({
+            title: 'Updated!',
+          });
         }}
       />
     </View>

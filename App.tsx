@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen, ProfileScreen} from './src/screens';
+import {HomeScreen} from './src/screens';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -13,11 +13,6 @@ const App = () => {
           name="Home"
           component={HomeScreen}
           options={{title: 'My home'}}
-        />
-        <Stack.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={({route}) => ({title: route.params.name})}
         />
       </Stack.Navigator>
     </NavigationContainer>
