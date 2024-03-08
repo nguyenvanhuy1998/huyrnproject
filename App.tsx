@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen} from './src/screens';
-import {Image, Text} from 'react-native';
+import {Button, Image, Text} from 'react-native';
 const Stack = createNativeStackNavigator();
 
 function LogoTitle() {
@@ -18,6 +18,13 @@ const App = () => {
           component={HomeScreen}
           options={{
             headerTitle: props => <LogoTitle {...props} />,
+            headerRight: () => (
+              <Button
+                title="Info"
+                color={'#00cc00'}
+                onPress={() => alert('This is a button')}
+              />
+            ),
           }}
         />
       </Stack.Navigator>
