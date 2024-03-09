@@ -1,17 +1,10 @@
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, StyleSheet} from 'react-native';
 import React from 'react';
 
-const SettingsScreen = ({route, navigation}) => {
-  const {user} = route.params;
+const SettingsScreen = ({navigation}) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+    <View style={styles.container}>
       <Text>SettingsScreen</Text>
-      <Text>userParam:{JSON.stringify(user)}</Text>
       <Button
         title="Go to Profile"
         onPress={() => navigation.navigate('Profile')}
@@ -21,3 +14,10 @@ const SettingsScreen = ({route, navigation}) => {
 };
 
 export default SettingsScreen;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

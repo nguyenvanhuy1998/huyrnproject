@@ -1,45 +1,41 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
-  EmptyScreen,
-  FeedScreen,
-  HelpScreen,
+  DetailsScreen,
   HomeScreen,
   ProfileScreen,
   SettingsScreen,
 } from './src/screens';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-const Stack = createNativeStackNavigator();
 
+const Tab = createBottomTabNavigator();
+const SettingsStack = createNativeStackNavigator();
+const HomeStack = createNativeStackNavigator();
 const App = () => {
-  const isLoggedIn = true;
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        {!isLoggedIn ? (
-          // Screens for logged in users
-          <Stack.Group>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Profile" component={EmptyScreen} />
-          </Stack.Group>
-        ) : (
-          // Auth screens
-          <Stack.Group screenOptions={{headerShown: false}}>
-            <Stack.Screen name="SignIn" component={EmptyScreen} />
-            <Stack.Screen name="SignUp" component={EmptyScreen} />
-          </Stack.Group>
-        )}
-        {/* Common modal screens */}
-        <Stack.Group
-          screenOptions={{
-            presentation: 'modal',
-          }}>
-          <Stack.Screen name="Help" component={HelpScreen} />
-          <Stack.Screen name="Invite" component={EmptyScreen} />
-        </Stack.Group>
-      </Stack.Navigator>
+      <Tab.Navigator screenOptions={{headerShown: false}}>
+        <Tab.Screen name="First">
+          {() => (
+            <SettingsStack.Navigator>
+              <SettingsStack.Screen
+                name="Settings"
+                component={SettingsScreen}
+              />
+              <SettingsStack.Screen name="Profile" component={ProfileScreen} />
+            </SettingsStack.Navigator>
+          )}
+        </Tab.Screen>
+        <Tab.Screen name="Second">
+          {() => (
+            <HomeStack.Navigator>
+              <HomeStack.Screen name="Home" component={HomeScreen} />
+              <SettingsStack.Screen name="Details" component={DetailsScreen} />
+            </HomeStack.Navigator>
+          )}
+        </Tab.Screen>
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
