@@ -11,6 +11,8 @@ import MessagesScreen from './Messages/MessagesScreen';
 import EmptyScreen from './Empty/EmptyScreen';
 import HelpScreen from './Help/HelpScreen';
 import NotificationsScreen from './Notifications/NotificationsScreen';
+import SplashScreen from './SplashScreen/SplashScreen';
+import SignInScreen from './SignIn/SignInScreen';
 
 export {
   HomeScreen,
@@ -26,4 +28,6 @@ export {
   EmptyScreen,
   HelpScreen,
   NotificationsScreen,
+  SplashScreen,
+  SignInScreen,
 };
