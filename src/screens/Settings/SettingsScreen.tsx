@@ -5,10 +5,7 @@ const SettingsScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text>SettingsScreen</Text>
-      <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate('Profile')}
-      />
+      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
     </View>
   );
 };
