@@ -1,17 +1,21 @@
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, StyleSheet} from 'react-native';
 import React from 'react';
 
 const FeedScreen = ({navigation}) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>FeedScreen</Text>
-      <Button title="Go to Root" onPress={() => navigation.navigate('Root')} />
-      <Button
-        title="Go to Root, Profile"
-        onPress={() => navigation.navigate('Root', {screen: 'Profile'})}
-      />
+      <Button title="Open drawer" onPress={() => navigation.openDrawer()} />
+      <Button title="Toggle drawer" onPress={() => navigation.toggleDrawer()} />
     </View>
   );
 };
 
 export default FeedScreen;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

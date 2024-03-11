@@ -1,18 +1,16 @@
-import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
 
-const HomeScreen = ({navigation}) => {
+const NotificationsScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <Button
-        title="Go to Notifications"
-        onPress={() => navigation.navigate('Notifications')}
-      />
+      <Text>Notifications Screen</Text>
     </View>
   );
 };
 
-export default HomeScreen;
+export default NotificationsScreen;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
