@@ -4,11 +4,7 @@ import React from 'react';
 const DetailsScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <Text>DetailsScreen</Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() => navigation.push('Details')}
-      />
+      <Text>Details!</Text>
     </View>
   );
 };
