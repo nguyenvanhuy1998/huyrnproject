@@ -5,6 +5,7 @@ import {
   createDrawerNavigator,
 } from '@react-navigation/drawer';
 import {FeedScreen, NotificationsScreen} from '../screens';
+import {DrawerActions} from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator();
 const CustomDrawerContent = props => {
@@ -13,11 +14,11 @@ const CustomDrawerContent = props => {
       <DrawerItemList {...props} />
       <DrawerItem
         label={'Close drawer'}
-        onPress={() => props.navigation.closeDrawer()}
+        onPress={() => props.navigation.dispatch(DrawerActions.closeDrawer())}
       />
       <DrawerItem
         label={'Toggle drawer'}
-        onPress={() => props.navigation.toggleDrawer()}
+        onPress={() => props.navigation.dispatch(DrawerActions.toggleDrawer())}
       />
     </DrawerContentScrollView>
   );
