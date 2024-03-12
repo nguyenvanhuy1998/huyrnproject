@@ -3,12 +3,16 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useIsFocused} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import {Button} from 'react-native';
 
 const Stack = createNativeStackNavigator();
+const FocusAwareStatusBar = props => {
+  const isFocused = useIsFocused();
+  return isFocused ? <StatusBar {...props} /> : null;
+};
 const Screen1 = ({navigation}) => {
   const insets = useSafeAreaInsets();
   return (
@@ -23,7 +27,7 @@ const Screen1 = ({navigation}) => {
           paddingRight: insets.right,
         },
       ]}>
-      <StatusBar barStyle={'light-content'} backgroundColor={'#6a51ae'} />
+      <FocusAwareStatusBar barStyle="light-content" backgroundColor="#6a51ae" />
       <Text style={{color: '#fff'}}>Light Screen</Text>
       <Button
         title="Next screen"
@@ -46,7 +50,10 @@ const Screen2 = ({navigation}) => {
           paddingRight: insets.right,
         },
       ]}>
-      <StatusBar barStyle={'dark-content'} backgroundColor={'#ecf0f1'} />
+      <FocusAwareStatusBar
+        barStyle={'dark-content'}
+        backgroundColor={'#ecf0f1'}
+      />
       <Text>Dark Screen</Text>
       <Button
         title="Next screen"
