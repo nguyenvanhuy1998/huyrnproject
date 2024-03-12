@@ -13,6 +13,7 @@ import HelpScreen from './Help/HelpScreen';
 import NotificationsScreen from './Notifications/NotificationsScreen';
 import SplashScreen from './SplashScreen/SplashScreen';
 import SignInScreen from './SignIn/SignInScreen';
+import MyModalScreen from './MyModal/MyModalScreen';
 
 export {
   HomeScreen,
@@ -30,4 +31,5 @@ export {
   NotificationsScreen,
   SplashScreen,
   SignInScreen,
+  MyModalScreen,
 };

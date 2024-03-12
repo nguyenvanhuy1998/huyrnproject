@@ -4,14 +4,10 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
+      <Text style={{fontSize: 30}}>This is the home screen!</Text>
       <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate('Profile')}
-      />
-      <Button
-        title="Go to Settings"
-        onPress={() => navigation.navigate('Settings')}
+        title="Open Modal"
+        onPress={() => navigation.navigate('MyModal')}
       />
     </View>
   );
