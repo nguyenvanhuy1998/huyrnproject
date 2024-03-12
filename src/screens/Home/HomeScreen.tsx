@@ -1,14 +1,18 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
-import {AuthContext} from '../../../App';
 
 const HomeScreen = ({navigation}) => {
-  const {signOut} = React.useContext(AuthContext);
-
   return (
-    <View>
-      <Text>Signed in!</Text>
-      <Button title="Sign out" onPress={signOut} />
+    <View style={styles.container}>
+      <Text>Home Screen</Text>
+      <Button
+        title="Go to Profile"
+        onPress={() => navigation.navigate('Profile')}
+      />
+      <Button
+        title="Go to Settings"
+        onPress={() => navigation.navigate('Settings')}
+      />
     </View>
   );
 };
