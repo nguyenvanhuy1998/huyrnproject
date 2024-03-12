@@ -1,21 +1,44 @@
-import React from 'react';
+import React, {createContext, useMemo} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {DetailsScreen, HomeScreen, MyModalScreen} from './src/screens';
+import {HomeScreen} from './src/screens';
+import {Drawer} from 'react-native-drawer-layout';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+export const RightDrawerContext = createContext();
 
-const RootStack = createNativeStackNavigator();
+const LeftDrawer = createDrawerNavigator();
+
+const LeftDrawerScreen = () => {
+  return (
+    <LeftDrawer.Navigator screenOptions={{drawerPosition: 'left'}}>
+      <LeftDrawer.Screen name="Home" component={HomeScreen} />
+    </LeftDrawer.Navigator>
+  );
+};
+function RightDrawerScreen() {
+  const [rightDrawerOpen, setRightDrawerOpen] = React.useState(false);
+  const value = useMemo(() => {
+    return {
+      openRightDrawer: () => setRightDrawerOpen(true),
+      closeRightDrawer: () => setRightDrawerOpen(false),
+    };
+  }, []);
+  return (
+    <Drawer
+      open={rightDrawerOpen}
+      onOpen={() => setRightDrawerOpen(true)}
+      onClose={() => setRightDrawerOpen(false)}
+      drawerPosition="right"
+      renderDrawerContent={() => <>{/* Right drawer content */}</>}>
+      <RightDrawerContext.Provider value={value}>
+        <LeftDrawerScreen />
+      </RightDrawerContext.Provider>
+    </Drawer>
+  );
+}
 const App = () => {
   return (
     <NavigationContainer>
-      <RootStack.Navigator>
-        <RootStack.Group>
-          <RootStack.Screen name="Home" component={HomeScreen} />
-          <RootStack.Screen name="Details" component={DetailsScreen} />
-        </RootStack.Group>
-        <RootStack.Group screenOptions={{presentation: 'modal'}}>
-          <RootStack.Screen name="MyModal" component={MyModalScreen} />
-        </RootStack.Group>
-      </RootStack.Navigator>
+      <RightDrawerScreen />
     </NavigationContainer>
   );
 };

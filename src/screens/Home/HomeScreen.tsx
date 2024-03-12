@@ -1,14 +1,16 @@
-import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import React, {useContext} from 'react';
+import {Button, StyleSheet, View} from 'react-native';
+import {RightDrawerContext} from '../../../App';
 
 const HomeScreen = ({navigation}) => {
+  const {openRightDrawer} = useContext(RightDrawerContext);
   return (
     <View style={styles.container}>
-      <Text style={{fontSize: 30}}>This is the home screen!</Text>
       <Button
-        title="Open Modal"
-        onPress={() => navigation.navigate('MyModal')}
+        onPress={() => navigation.openDrawer()}
+        title="Open left drawer"
       />
+      <Button title="Open right drawer" onPress={() => openRightDrawer()} />
     </View>
   );
 };
