@@ -15,6 +15,7 @@ import SplashScreen from './SplashScreen/SplashScreen';
 import SignInScreen from './SignIn/SignInScreen';
 import MyModalScreen from './MyModal/MyModalScreen';
 import AccountScreen from './Account/AccountScreen';
+import CustomBackAndroidScreen from './CustomBackAndroid/CustomBackAndroidScreen';
 
 export {
   HomeScreen,
@@ -34,4 +35,5 @@ export {
   SignInScreen,
   MyModalScreen,
   AccountScreen,
+  CustomBackAndroidScreen,
 };
