@@ -1,44 +1,55 @@
-import React, {createContext, useMemo} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
-import {HomeScreen} from './src/screens';
-import {Drawer} from 'react-native-drawer-layout';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-export const RightDrawerContext = createContext();
 
-const LeftDrawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
+const HomeStack = createNativeStackNavigator();
+const SettingsStack = createNativeStackNavigator();
+function A() {
+  return <View />;
+}
 
-const LeftDrawerScreen = () => {
+function B() {
+  return <View />;
+}
+const HomeStackScreen = () => {
   return (
-    <LeftDrawer.Navigator screenOptions={{drawerPosition: 'left'}}>
-      <LeftDrawer.Screen name="Home" component={HomeScreen} />
-    </LeftDrawer.Navigator>
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="A" component={A} />
+    </HomeStack.Navigator>
   );
 };
-function RightDrawerScreen() {
-  const [rightDrawerOpen, setRightDrawerOpen] = React.useState(false);
-  const value = useMemo(() => {
-    return {
-      openRightDrawer: () => setRightDrawerOpen(true),
-      closeRightDrawer: () => setRightDrawerOpen(false),
-    };
-  }, []);
+const SettingsStackScreen = () => {
   return (
-    <Drawer
-      open={rightDrawerOpen}
-      onOpen={() => setRightDrawerOpen(true)}
-      onClose={() => setRightDrawerOpen(false)}
-      drawerPosition="right"
-      renderDrawerContent={() => <>{/* Right drawer content */}</>}>
-      <RightDrawerContext.Provider value={value}>
-        <LeftDrawerScreen />
-      </RightDrawerContext.Provider>
-    </Drawer>
+    <SettingsStack.Navigator>
+      <HomeStack.Screen name="B" component={B} />
+    </SettingsStack.Navigator>
   );
-}
+};
 const App = () => {
   return (
     <NavigationContainer>
-      <RightDrawerScreen />
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Tab.Screen
+          name="Home"
+          component={HomeStackScreen}
+          options={{
+            tabBarLabel: 'Home!',
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsStackScreen}
+          options={{
+            tabBarLabel: 'Settings!',
+          }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
