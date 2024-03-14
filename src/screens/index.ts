@@ -14,6 +14,7 @@ import NotificationsScreen from './Notifications/NotificationsScreen';
 import SplashScreen from './SplashScreen/SplashScreen';
 import SignInScreen from './SignIn/SignInScreen';
 import MyModalScreen from './MyModal/MyModalScreen';
+import AccountScreen from './Account/AccountScreen';
 
 export {
   HomeScreen,
@@ -32,4 +33,5 @@ export {
   SplashScreen,
   SignInScreen,
   MyModalScreen,
+  AccountScreen,
 };

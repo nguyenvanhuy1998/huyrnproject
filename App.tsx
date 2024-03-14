@@ -1,55 +1,70 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  NavigationContainer,
+  getFocusedRouteNameFromRoute,
+} from '@react-navigation/native';
+import {
+  AccountScreen,
+  FeedScreen,
+  ProfileScreen,
+  SettingsScreen,
+} from './src/screens';
 
+const RootStack = createNativeStackNavigator();
+const FeedStack = createNativeStackNavigator();
+const ProfileStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-const HomeStack = createNativeStackNavigator();
-const SettingsStack = createNativeStackNavigator();
-function A() {
-  return <View />;
-}
 
-function B() {
-  return <View />;
-}
-const HomeStackScreen = () => {
+const getHeaderTitle = route => {
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';
+  switch (routeName) {
+    case 'Feed':
+      return 'News feed';
+    case 'Profile':
+      return 'My profile';
+    case 'Account':
+      return 'My account';
+  }
+};
+const FeedStackScreen = () => {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="A" component={A} />
-    </HomeStack.Navigator>
+    <FeedStack.Navigator>
+      <FeedStack.Screen name="Feed" component={FeedScreen} />
+      {/* other screen */}
+    </FeedStack.Navigator>
   );
 };
-const SettingsStackScreen = () => {
+const ProfileStackScreen = () => {
   return (
-    <SettingsStack.Navigator>
-      <HomeStack.Screen name="B" component={B} />
-    </SettingsStack.Navigator>
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+      {/* other screen */}
+    </ProfileStack.Navigator>
+  );
+};
+const HomeTabs = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Tab.Screen name="Feed" component={FeedStackScreen} />
+      <Tab.Screen name="Profile" component={ProfileStackScreen} />
+    </Tab.Navigator>
   );
 };
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <RootStack.Navigator
         screenOptions={{
           headerShown: false,
         }}>
-        <Tab.Screen
-          name="Home"
-          component={HomeStackScreen}
-          options={{
-            tabBarLabel: 'Home!',
-          }}
-        />
-        <Tab.Screen
-          name="Settings"
-          component={SettingsStackScreen}
-          options={{
-            tabBarLabel: 'Settings!',
-          }}
-        />
-      </Tab.Navigator>
+        <RootStack.Screen name="Home" component={HomeTabs} />
+        <RootStack.Screen name="Settings" component={SettingsScreen} />
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };

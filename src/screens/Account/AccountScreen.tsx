@@ -1,15 +1,16 @@
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const FeedScreen = ({navigation}) => {
+const AccountScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>FeedScreen</Text>
+      <Text>AccountScreen</Text>
     </View>
   );
 };
 
-export default FeedScreen;
+export default AccountScreen;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
