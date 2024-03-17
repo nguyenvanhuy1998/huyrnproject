@@ -1,14 +1,14 @@
 import React from 'react';
 import {Button, Text, View} from 'react-native';
-import {commonStyles} from '../../constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {globalStyles} from '../../styles';
 
 const HomeScreen = () => {
   const handleLogout = async () => {
     await AsyncStorage.clear();
   };
   return (
-    <View style={commonStyles.containerCenter}>
+    <View style={globalStyles.containerCenter}>
       <Text>Home Screen</Text>
       <Button title="Logout" onPress={handleLogout} />
     </View>
