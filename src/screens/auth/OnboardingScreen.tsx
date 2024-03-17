@@ -1,8 +1,15 @@
 import React, {useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Swiper from 'react-native-swiper';
-import {COLORS, SCREEN_NAMES, SPACING, images} from '../../constants';
+import {
+  COLORS,
+  FONT_FAMILY,
+  SCREEN_NAMES,
+  SPACING,
+  images,
+} from '../../constants';
 import {globalStyles} from '../../styles';
+import {TextComponent} from '../../components';
 
 const OnboardingScreen = ({navigation}: any) => {
   const [index, setIndex] = useState(0);
@@ -45,10 +52,20 @@ const OnboardingScreen = ({navigation}: any) => {
       </Swiper>
       <View style={styles.btnBottomContainer}>
         <TouchableOpacity onPress={handleSkip}>
-          <Text style={[styles.text, {color: COLORS.gray2}]}>Skip</Text>
+          <TextComponent
+            text="Skip"
+            color={COLORS.gray2}
+            fontSize={16}
+            fontFamily={FONT_FAMILY.medium}
+          />
         </TouchableOpacity>
         <TouchableOpacity onPress={handleNext}>
-          <Text style={styles.text}>Next</Text>
+          <TextComponent
+            text="Next"
+            color={COLORS.white}
+            fontSize={16}
+            fontFamily={FONT_FAMILY.medium}
+          />
         </TouchableOpacity>
       </View>
     </View>

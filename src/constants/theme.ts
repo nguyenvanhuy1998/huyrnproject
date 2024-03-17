@@ -19,6 +19,12 @@ interface ScreenName {
   Home: 'HomeScreen';
   Onboarding: 'OnboardingScreen';
 }
+interface FontFamily {
+  regular: string;
+  medium: string;
+  semiBold: string;
+  bold: string;
+}
 
 export const COLORS: Color = {
   primary: '#5669FF',
@@ -38,4 +44,10 @@ export const SCREEN_NAMES: ScreenName = {
 export const SPACING: Spacing = {
   width: Dimensions.get('window').width,
   height: Dimensions.get('window').height,
+};
+export const FONT_FAMILY: FontFamily = {
+  regular: 'AirbnbCereal_W_Lt',
+  medium: 'AirbnbCereal_W_Md',
+  semiBold: 'AirbnbCereal_W_Bd',
+  bold: 'AirbnbCereal_W_XBd',
 };

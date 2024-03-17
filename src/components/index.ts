@@ -1,2 +1,3 @@
 import Space from './Space';
-export {Space};
+import TextComponent from './TextComponent';
+export {Space, TextComponent};

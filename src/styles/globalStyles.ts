@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../constants';
+import {COLORS, FONT_FAMILY} from '../constants';
 
 export const globalStyles = StyleSheet.create({
   container: {
@@ -13,5 +13,10 @@ export const globalStyles = StyleSheet.create({
   },
   flex: {
     flex: 1,
+  },
+  text: {
+    fontFamily: FONT_FAMILY.regular,
+    fontSize: 14,
+    color: COLORS.text,
   },
 });
