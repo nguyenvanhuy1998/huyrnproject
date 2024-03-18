@@ -19,4 +19,14 @@ export const globalStyles = StyleSheet.create({
     fontSize: 14,
     color: COLORS.text,
   },
+  button: {
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.white,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    minHeight: 56,
+    flexDirection: 'row',
+  },
 });
