@@ -10,8 +10,7 @@ const LoginScreen = () => {
     await AsyncStorage.setItem('accessToken', 'ababaabababa');
   };
   return (
-    <View
-      style={[globalStyles.container, {padding: 16, backgroundColor: 'coral'}]}>
+    <View style={[globalStyles.container, {padding: 16}]}>
       <Text>Login Screen</Text>
       <ButtonComponent
         text="forget password"
