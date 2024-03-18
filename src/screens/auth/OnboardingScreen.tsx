@@ -53,6 +53,7 @@ const OnboardingScreen = ({navigation}: any) => {
       <View style={styles.btnBottomContainer}>
         <TouchableOpacity onPress={handleSkip}>
           <TextComponent
+            fontSize={16}
             text="Skip"
             color={COLORS.gray2}
             fontFamily={FONT_FAMILY.medium}
@@ -60,8 +61,8 @@ const OnboardingScreen = ({navigation}: any) => {
         </TouchableOpacity>
         <TouchableOpacity onPress={handleNext}>
           <TextComponent
-            title
             text="Next"
+            fontSize={16}
             color={COLORS.white}
             fontFamily={FONT_FAMILY.medium}
           />
