@@ -3,7 +3,11 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {globalStyles} from '../../styles';
-import {InputComponent} from '../../components';
+import {
+  ContainerComponent,
+  InputComponent,
+  TextComponent,
+} from '../../components';
 import {Lock, Sms} from 'iconsax-react-native';
 import {COLORS} from '../../constants';
 
@@ -11,16 +15,9 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   return (
-    <View
-      style={[
-        globalStyles.container,
-        {
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: 20,
-        },
-      ]}>
-      <InputComponent
+    <ContainerComponent isImageBackground>
+      <TextComponent text="qweqweqwe" />
+      {/* <InputComponent
         placeholder="Email"
         value={email}
         allowClear
@@ -34,8 +31,8 @@ const LoginScreen = () => {
         isPassword
         onChangeText={value => setPassword(value)}
         prefix={<Lock size={22} color={COLORS.gray} />}
-      />
-    </View>
+      /> */}
+    </ContainerComponent>
   );
 };
 
