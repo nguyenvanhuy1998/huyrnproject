@@ -7,6 +7,7 @@ interface Color {
   text: string;
   gray: string;
   gray2: string;
+  gray3: string;
   transparent: 'transparent';
 }
 interface Spacing {
@@ -33,6 +34,7 @@ export const COLORS: Color = {
   text: '#120D26',
   gray: '#807A7A',
   gray2: '#DADADA',
+  gray3: '#E4DFDF',
   transparent: 'transparent',
 };
 export const SCREEN_NAMES: ScreenName = {

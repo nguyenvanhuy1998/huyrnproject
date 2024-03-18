@@ -1,26 +1,39 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
-import {Button, Text, View} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useState} from 'react';
+import {View} from 'react-native';
 import {globalStyles} from '../../styles';
-import {ButtonComponent} from '../../components';
+import {InputComponent} from '../../components';
+import {Lock, Sms} from 'iconsax-react-native';
+import {COLORS} from '../../constants';
 
 const LoginScreen = () => {
-  const handleSubmit = async () => {
-    await AsyncStorage.setItem('accessToken', 'ababaabababa');
-  };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
-    <View style={[globalStyles.container, {padding: 16}]}>
-      <Text>Login Screen</Text>
-      <ButtonComponent
-        text="forget password"
-        onPress={() => console.log('Login')}
-        type="text"
-        icon={
-          <View>
-            <Text>N</Text>
-          </View>
-        }
+    <View
+      style={[
+        globalStyles.container,
+        {
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: 20,
+        },
+      ]}>
+      <InputComponent
+        placeholder="Email"
+        value={email}
+        allowClear
+        onChangeText={value => setEmail(value)}
+        prefix={<Sms size={22} color={COLORS.gray} />}
+      />
+      <InputComponent
+        placeholder="Password"
+        value={password}
+        allowClear
+        isPassword
+        onChangeText={value => setPassword(value)}
+        prefix={<Lock size={22} color={COLORS.gray} />}
       />
     </View>
   );

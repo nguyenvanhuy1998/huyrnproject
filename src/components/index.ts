@@ -1,4 +1,5 @@
 import Space from './Space';
 import TextComponent from './TextComponent';
 import ButtonComponent from './ButtonComponent';
-export {Space, TextComponent, ButtonComponent};
+import InputComponent from './InputComponent';
+export {Space, TextComponent, ButtonComponent, InputComponent};
