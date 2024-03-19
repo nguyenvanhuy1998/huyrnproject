@@ -61,3 +61,4 @@ export const FONT_FAMILY: FontFamily = {
   semiBold: 'AirbnbCereal_W_Bd',
   bold: 'AirbnbCereal_W_XBd',
 };
+export const BASE_URL = 'http://localhost:3001';
