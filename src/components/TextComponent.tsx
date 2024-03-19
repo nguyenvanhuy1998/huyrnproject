@@ -27,10 +27,14 @@ const TextComponent = ({
         globalStyles.text,
         // eslint-disable-next-line react-native/no-inline-styles
         {
-          color,
+          color: color ?? COLORS.text,
           flex: flex ?? 0,
-          fontSize: title ? 24 : fontSize,
-          fontFamily: title ? FONT_FAMILY.bold : fontFamily,
+          fontSize: fontSize ? fontSize : title ? 24 : 14,
+          fontFamily: fontFamily
+            ? fontFamily
+            : title
+            ? FONT_FAMILY.medium
+            : FONT_FAMILY.regular,
         },
         styles,
       ]}>

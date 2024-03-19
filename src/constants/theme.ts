@@ -8,6 +8,7 @@ interface Color {
   gray: string;
   gray2: string;
   gray3: string;
+  gray4: string;
   transparent: 'transparent';
 }
 interface Spacing {
@@ -19,6 +20,9 @@ interface ScreenName {
   Login: 'LoginScreen';
   Home: 'HomeScreen';
   Onboarding: 'OnboardingScreen';
+  SignUp: 'SignUpScreen';
+  ForgotPassword: 'ForgotPasswordScreen';
+  Verification: 'VerificationScreen';
 }
 interface FontFamily {
   regular: string;
@@ -35,6 +39,7 @@ export const COLORS: Color = {
   gray: '#807A7A',
   gray2: '#DADADA',
   gray3: '#E4DFDF',
+  gray4: '#9d9898',
   transparent: 'transparent',
 };
 export const SCREEN_NAMES: ScreenName = {
@@ -42,6 +47,9 @@ export const SCREEN_NAMES: ScreenName = {
   Home: 'HomeScreen',
   Login: 'LoginScreen',
   Onboarding: 'OnboardingScreen',
+  SignUp: 'SignUpScreen',
+  ForgotPassword: 'ForgotPasswordScreen',
+  Verification: 'VerificationScreen',
 };
 export const SPACING: Spacing = {
   width: Dimensions.get('window').width,

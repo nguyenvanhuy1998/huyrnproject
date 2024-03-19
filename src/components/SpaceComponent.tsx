@@ -4,7 +4,7 @@ interface Props {
   width?: number;
   height?: number;
 }
-const Space = ({width, height}: Props) => {
+const SpaceComponent = ({width, height}: Props) => {
   return (
     <View
       style={{
@@ -15,4 +15,4 @@ const Space = ({width, height}: Props) => {
   );
 };
 
-export default Space;
+export default SpaceComponent;
