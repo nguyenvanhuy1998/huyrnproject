@@ -43,6 +43,7 @@ const InputComponent = ({
         onChangeText={val => onChangeText(val)}
         placeholderTextColor={'#747688'}
         keyboardType={keyboardType ?? 'default'}
+        autoCapitalize="none"
       />
       {suffix && suffix}
       <TouchableOpacity
