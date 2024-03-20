@@ -22,10 +22,11 @@ const RootNavigator = () => {
   useEffect(() => {
     const checkLogin = async () => {
       const res = await getItem();
+      console.log('res', res);
       res && dispatch(addAuth(JSON.parse(res)));
     };
     checkLogin();
-  }, [getItem, dispatch]);
+  }, []);
 
   return isShowSplash ? (
     <SplashScreen />

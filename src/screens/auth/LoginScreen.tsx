@@ -1,7 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {Image, Switch} from 'react-native';
+import {Alert, Image, Switch} from 'react-native';
 import {Lock, Sms} from 'iconsax-react-native';
 import {
   ButtonComponent,
@@ -15,17 +15,38 @@ import {
 import {COLORS, images, SCREEN_NAMES} from '../../constants';
 import {SocialLogin} from './components';
 import authApi from '../../api/authApi';
+import {Validate} from '../../utils/validate';
+import {useDispatch} from 'react-redux';
+import {addAuth} from '../../redux/reducers/authReducer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRemember, setIsRemember] = useState(true);
+  const dispatch = useDispatch();
   const handleLogin = async () => {
-    try {
-      const res = await authApi.HandleAuthentication('/hello');
-      console.log(res);
-    } catch (error) {
-      console.log(error);
+    const emailValidation = Validate.email(email);
+    if (emailValidation) {
+      try {
+        const res = await authApi.HandleAuthentication(
+          '/login',
+          {
+            email,
+            password,
+          },
+          'post',
+        );
+        dispatch(addAuth(res.data));
+        await AsyncStorage.setItem(
+          'auth',
+          isRemember ? JSON.stringify(res.data) : email,
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      Alert.alert('Email is not correct');
     }
   };
   return (
