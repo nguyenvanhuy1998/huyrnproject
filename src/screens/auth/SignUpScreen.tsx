@@ -51,7 +51,11 @@ const SignUpScreen = ({navigation}: any) => {
         try {
           const res = await authApi.HandleAuthentication(
             '/register',
-            values,
+            {
+              fullName: values.fullName,
+              email,
+              password,
+            },
             'post',
           );
           console.log(res);
