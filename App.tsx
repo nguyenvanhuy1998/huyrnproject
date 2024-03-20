@@ -6,10 +6,11 @@ import {SplashScreen} from './src/screens';
 import {StatusBar} from 'react-native';
 import {COLORS} from './src/constants';
 import MainNavigator from './src/navigators/MainNavigator';
+import {Provider} from 'react-redux';
+import store from './src/redux/store';
+import RootNavigator from './src/navigators/RootNavigator';
 const App = () => {
   const [isShowSplash, setIsShowSplash] = useState(true);
-  const [accessToken, setAccessToken] = useState('');
-  const {getItem, setItem} = useAsyncStorage('accessToken');
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsShowSplash(false);
@@ -17,13 +18,6 @@ const App = () => {
 
     return () => clearTimeout(timeout);
   }, []);
-  useEffect(() => {
-    const checkLogin = async () => {
-      const token = await getItem();
-      token && setAccessToken(token);
-    };
-    checkLogin();
-  }, [getItem]);
 
   return (
     <>
@@ -32,13 +26,15 @@ const App = () => {
         backgroundColor={COLORS.transparent}
         translucent
       />
-      {isShowSplash ? (
-        <SplashScreen />
-      ) : (
-        <NavigationContainer>
-          {accessToken ? <MainNavigator /> : <AuthNavigator />}
-        </NavigationContainer>
-      )}
+      <Provider store={store}>
+        {isShowSplash ? (
+          <SplashScreen />
+        ) : (
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+        )}
+      </Provider>
     </>
   );
 };
