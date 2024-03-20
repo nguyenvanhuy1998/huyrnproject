@@ -1,10 +1,9 @@
-import {View, Text} from 'react-native';
-import React, {useEffect} from 'react';
-import MainNavigator from './MainNavigator';
-import AuthNavigator from './AuthNavigator';
 import {useAsyncStorage} from '@react-native-async-storage/async-storage';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {addAuth, authSelector} from '../redux/reducers/authReducer';
+import AuthNavigator from './AuthNavigator';
+import MainNavigator from './MainNavigator';
 
 const RootNavigator = () => {
   const {getItem} = useAsyncStorage('auth');
@@ -13,7 +12,6 @@ const RootNavigator = () => {
   useEffect(() => {
     const checkLogin = async () => {
       const res = await getItem();
-      console.log('resLogin', res);
       res && dispatch(addAuth(JSON.parse(res)));
     };
     checkLogin();
