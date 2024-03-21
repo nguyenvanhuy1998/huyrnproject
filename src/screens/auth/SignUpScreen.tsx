@@ -11,7 +11,7 @@ import {
   SpaceComponent,
   TextComponent,
 } from '../../components';
-import {COLORS} from '../../constants';
+import {COLORS, SCREEN_NAMES} from '../../constants';
 import {LoadingModal} from '../../modals';
 import {SocialLogin} from './components';
 import authApi from '../../api/authApi';
@@ -44,13 +44,14 @@ const SignUpScreen = ({navigation}: any) => {
       (errorMessage &&
         (errorMessage.email ||
           errorMessage.password ||
-          errorMessage.confirmPassword))
+          errorMessage.confirmPassword) &&
+        (!values.email || !values.password || !values.confirmPassword))
     ) {
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
     }
-  }, [errorMessage]);
+  }, [errorMessage, values]);
 
   const handleChangeValue = (key: string, value: string) => {
     const data: any = {...values};
@@ -87,36 +88,25 @@ const SignUpScreen = ({navigation}: any) => {
     setErrorMessage(data);
   };
   const handleRegister = async () => {
-    // const {email, password, confirmPassword} = values;
-    // const emailValidation = Validate.email(email);
-    // const passwordValidation = Validate.password(password);
-    // if (email && password && confirmPassword) {
-    //   if (emailValidation && passwordValidation) {
-    //     setErrorMessage('');
-    //     setIsLoading(true);
-    //     try {
-    //       const res = await authApi.HandleAuthentication(
-    //         '/register',
-    //         {
-    //           fullName: values.fullName,
-    //           email,
-    //           password,
-    //         },
-    //         'post',
-    //       );
-    //       dispatch(addAuth(res.data));
-    //       await AsyncStorage.setItem('auth', JSON.stringify(res.data));
-    //       setIsLoading(false);
-    //     } catch (error) {
-    //       console.log(error);
-    //       setIsLoading(false);
-    //     }
-    //   } else {
-    //     setErrorMessage('Email not correct!!!');
-    //   }
-    // } else {
-    //   setErrorMessage('Vui lòng nhập đầy đủ thông tin');
-    // }
+    setIsLoading(true);
+    try {
+      const res = await authApi.HandleAuthentication(
+        '/verifyOtp',
+        {
+          email: values.email,
+        },
+        'post',
+      );
+      console.log(res);
+      setIsLoading(false);
+      navigation.navigate(SCREEN_NAMES.Verification, {
+        code: res.data.code,
+        ...values,
+      });
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+    }
   };
   return (
     <ContainerComponent isImageBackground isScroll back>
