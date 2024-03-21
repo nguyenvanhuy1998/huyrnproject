@@ -20,6 +20,11 @@ import {useDispatch} from 'react-redux';
 import {addAuth} from '../../redux/reducers/authReducer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+interface ErrorMessage {
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
+}
 const initValues = {
   fullName: '',
   email: '',
@@ -29,52 +34,89 @@ const initValues = {
 const SignUpScreen = ({navigation}: any) => {
   const [values, setValues] = useState(initValues);
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState<any>();
+  const [isDisabled, setIsDisabled] = useState(true);
   const dispatch = useDispatch();
+
   useEffect(() => {
-    if (values.email || values.password || values.confirmPassword) {
-      setErrorMessage('');
+    if (
+      !errorMessage ||
+      (errorMessage &&
+        (errorMessage.email ||
+          errorMessage.password ||
+          errorMessage.confirmPassword))
+    ) {
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
     }
-  }, [values.email, values.password, values.confirmPassword]);
+  }, [errorMessage]);
 
   const handleChangeValue = (key: string, value: string) => {
     const data: any = {...values};
     data[key] = value;
     setValues(data);
   };
-  const handleRegister = async () => {
-    const {email, password, confirmPassword} = values;
-    const emailValidation = Validate.email(email);
-    const passwordValidation = Validate.password(password);
-
-    if (email && password && confirmPassword) {
-      if (emailValidation && passwordValidation) {
-        setErrorMessage('');
-        setIsLoading(true);
-        try {
-          const res = await authApi.HandleAuthentication(
-            '/register',
-            {
-              fullName: values.fullName,
-              email,
-              password,
-            },
-            'post',
-          );
-
-          dispatch(addAuth(res.data));
-          await AsyncStorage.setItem('auth', JSON.stringify(res.data));
-          setIsLoading(false);
-        } catch (error) {
-          console.log(error);
-          setIsLoading(false);
+  const formValidator = (key: string) => {
+    const data = {...errorMessage};
+    let message = '';
+    switch (key) {
+      case 'email':
+        if (!values.email) {
+          message = 'Email is required';
+        } else if (!Validate.email(values.email)) {
+          message = 'Email is not valid';
+        } else {
+          message = '';
         }
-      } else {
-        setErrorMessage('Email not correct!!!');
-      }
-    } else {
-      setErrorMessage('Vui lòng nhập đầy đủ thông tin');
+        break;
+      case 'password':
+        message = !values.password ? 'Password is required' : '';
+        break;
+      case 'confirmPassword':
+        if (!values.confirmPassword) {
+          message = 'Please enter your confirm password';
+        } else if (values.confirmPassword !== values.password) {
+          message = 'Passwords do not match';
+        } else {
+          message = '';
+        }
+        break;
     }
+    data[key] = message;
+    setErrorMessage(data);
+  };
+  const handleRegister = async () => {
+    // const {email, password, confirmPassword} = values;
+    // const emailValidation = Validate.email(email);
+    // const passwordValidation = Validate.password(password);
+    // if (email && password && confirmPassword) {
+    //   if (emailValidation && passwordValidation) {
+    //     setErrorMessage('');
+    //     setIsLoading(true);
+    //     try {
+    //       const res = await authApi.HandleAuthentication(
+    //         '/register',
+    //         {
+    //           fullName: values.fullName,
+    //           email,
+    //           password,
+    //         },
+    //         'post',
+    //       );
+    //       dispatch(addAuth(res.data));
+    //       await AsyncStorage.setItem('auth', JSON.stringify(res.data));
+    //       setIsLoading(false);
+    //     } catch (error) {
+    //       console.log(error);
+    //       setIsLoading(false);
+    //     }
+    //   } else {
+    //     setErrorMessage('Email not correct!!!');
+    //   }
+    // } else {
+    //   setErrorMessage('Vui lòng nhập đầy đủ thông tin');
+    // }
   };
   return (
     <ContainerComponent isImageBackground isScroll back>
@@ -95,6 +137,7 @@ const SignUpScreen = ({navigation}: any) => {
           keyboardType="email-address"
           onChangeText={value => handleChangeValue('email', value)}
           prefix={<Sms size={22} color={COLORS.gray} />}
+          onEnd={() => formValidator('email')}
         />
         <InputComponent
           placeholder="Your password"
@@ -103,6 +146,7 @@ const SignUpScreen = ({navigation}: any) => {
           isPassword
           onChangeText={value => handleChangeValue('password', value)}
           prefix={<Lock size={22} color={COLORS.gray} />}
+          onEnd={() => formValidator('password')}
         />
         <InputComponent
           placeholder="Confirm password"
@@ -111,17 +155,32 @@ const SignUpScreen = ({navigation}: any) => {
           isPassword
           onChangeText={value => handleChangeValue('confirmPassword', value)}
           prefix={<Lock size={22} color={COLORS.gray} />}
+          onEnd={() => formValidator('confirmPassword')}
         />
       </SectionComponent>
 
-      {errorMessage && (
-        <SectionComponent>
-          <TextComponent text={errorMessage} color={COLORS.dangerous} />
-        </SectionComponent>
-      )}
+      {errorMessage &&
+        (errorMessage.email ||
+          errorMessage.password ||
+          errorMessage.confirmPassword) && (
+          <SectionComponent>
+            {Object.keys(errorMessage).map((error, index) => {
+              return (
+                errorMessage[error] && (
+                  <TextComponent
+                    key={`error${index}`}
+                    text={errorMessage[`${error}`]}
+                    color={COLORS.dangerous}
+                  />
+                )
+              );
+            })}
+          </SectionComponent>
+        )}
       <SpaceComponent height={16} />
       <SectionComponent>
         <ButtonComponent
+          disabled={isDisabled}
           text="SIGN UP"
           type="primary"
           onPress={handleRegister}

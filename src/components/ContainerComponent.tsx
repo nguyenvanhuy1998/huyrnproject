@@ -68,7 +68,9 @@ const ContainerComponent = ({
     );
   };
   const returnContainer = isScroll ? (
-    <ScrollView style={globalStyles.flex}>{children}</ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false} style={globalStyles.flex}>
+      {children}
+    </ScrollView>
   ) : (
     <View style={globalStyles.flex}>{children}</View>
   );
