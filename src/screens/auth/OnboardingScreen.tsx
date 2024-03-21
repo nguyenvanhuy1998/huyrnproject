@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Swiper from 'react-native-swiper';
 import {
   COLORS,
@@ -81,14 +88,14 @@ const styles = StyleSheet.create({
   },
   btnBottomContainer: {
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     position: 'absolute',
-    bottom: 0,
-    right: 0,
-    left: 0,
+    bottom: 20,
+    right: 20,
+    left: 20,
   },
   text: {
     color: COLORS.white,
