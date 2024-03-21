@@ -1,13 +1,7 @@
 import React, {useState} from 'react';
-import {
-  Image,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Swiper from 'react-native-swiper';
+import {TextComponent} from '../../components';
 import {
   COLORS,
   FONT_FAMILY,
@@ -16,7 +10,6 @@ import {
   images,
 } from '../../constants';
 import {globalStyles} from '../../styles';
-import {TextComponent} from '../../components';
 
 const OnboardingScreen = ({navigation}: any) => {
   const [index, setIndex] = useState(0);
