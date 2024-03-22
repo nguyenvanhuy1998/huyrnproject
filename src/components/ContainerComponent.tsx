@@ -44,7 +44,8 @@ const ContainerComponent = ({
               paddingVertical: 10,
               minWidth: 48,
               minHeight: 48,
-            }}>
+            }}
+            justify="flex-start">
             {back && (
               <TouchableOpacity
                 onPress={() => navigation.goBack()}

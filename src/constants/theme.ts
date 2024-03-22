@@ -3,6 +3,7 @@ import {Dimensions} from 'react-native';
 interface Color {
   primary: string;
   white: string;
+  secondary: string;
   white_opacity_20: string;
   text: string;
   gray: string;
@@ -34,6 +35,7 @@ interface FontFamily {
 
 export const COLORS: Color = {
   primary: '#5669FF',
+  secondary: '#3056f0',
   white: '#fff',
   white_opacity_20: 'rgba(255, 255, 255, 0.2)',
   text: '#120D26',

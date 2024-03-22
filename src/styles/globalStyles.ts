@@ -48,4 +48,12 @@ export const globalStyles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
+  iconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 30,
+    height: 30,
+    borderRadius: 100,
+    backgroundColor: COLORS.secondary,
+  },
 });

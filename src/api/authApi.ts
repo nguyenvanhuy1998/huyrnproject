@@ -1,4 +1,3 @@
-import {BASE_URL} from '../constants';
 import axiosClient from './axiosClient';
 
 class AuthAPI {
@@ -7,7 +6,7 @@ class AuthAPI {
     data?: any,
     method?: 'get' | 'post' | 'put' | 'delete' | 'path',
   ) => {
-    return await axiosClient(`${BASE_URL}/auth${url}`, {
+    return await axiosClient(`/auth${url}`, {
       method: method ?? 'get',
       data,
     });
