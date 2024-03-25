@@ -1,4 +1,4 @@
-import {Dimensions} from 'react-native';
+import {Dimensions, Platform} from 'react-native';
 
 interface Color {
   primary: string;
@@ -66,3 +66,4 @@ export const FONT_FAMILY: FontFamily = {
   bold: 'AirbnbCereal_W_XBd',
 };
 export const BASE_URL = 'http://localhost:3001';
+export const BASE_URL_ANDROID = 'http://10.0.2.2:3001';

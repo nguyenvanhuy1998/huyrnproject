@@ -1,6 +1,6 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Alert, Image, Switch} from 'react-native';
 import {Lock, Sms} from 'iconsax-react-native';
 import {
@@ -24,7 +24,19 @@ const LoginScreen = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRemember, setIsRemember] = useState(true);
+  const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const emailValidation = Validate.email(email);
+
+    if (!email || !password || !emailValidation) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  }, [email, password]);
+
   const handleLogin = async () => {
     const emailValidation = Validate.email(email);
     if (emailValidation) {
@@ -104,7 +116,12 @@ const LoginScreen = ({navigation}: any) => {
       </SectionComponent>
       <SpaceComponent height={16} />
       <SectionComponent>
-        <ButtonComponent text="SIGN IN" type="primary" onPress={handleLogin} />
+        <ButtonComponent
+          disabled={disabled}
+          text="SIGN IN"
+          type="primary"
+          onPress={handleLogin}
+        />
       </SectionComponent>
       <SocialLogin />
       <SectionComponent>

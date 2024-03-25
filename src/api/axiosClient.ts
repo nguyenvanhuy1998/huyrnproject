@@ -1,9 +1,10 @@
 import axios from 'axios';
 import queryString from 'query-string';
-import {BASE_URL} from '../constants';
+import {BASE_URL, BASE_URL_ANDROID} from '../constants';
+import {Platform} from 'react-native';
 
 const axiosClient = axios.create({
-  baseURL: BASE_URL,
+  baseURL: Platform.OS === 'ios' ? BASE_URL : BASE_URL_ANDROID,
   paramsSerializer: params => queryString.stringify(params),
 });
 axiosClient.interceptors.request.use((config: any) => {
