@@ -10,6 +10,7 @@ interface Color {
   gray2: string;
   gray3: string;
   gray4: string;
+  gray5: string;
   transparent: 'transparent';
   dangerous: string;
 }
@@ -35,6 +36,7 @@ export const COLORS: Color = {
   gray2: '#DADADA',
   gray3: '#E4DFDF',
   gray4: '#9d9898',
+  gray5: '#D9D9D9',
   transparent: 'transparent',
   dangerous: '#d91e18',
 };
