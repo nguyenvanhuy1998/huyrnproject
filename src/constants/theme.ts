@@ -1,4 +1,4 @@
-import {Dimensions, Platform} from 'react-native';
+import {Dimensions} from 'react-native';
 
 interface Color {
   primary: string;
@@ -17,15 +17,7 @@ interface Spacing {
   width: number;
   height: number;
 }
-interface ScreenName {
-  Main: 'Main';
-  Login: 'LoginScreen';
-  Home: 'HomeScreen';
-  Onboarding: 'OnboardingScreen';
-  SignUp: 'SignUpScreen';
-  ForgotPassword: 'ForgotPasswordScreen';
-  Verification: 'VerificationScreen';
-}
+
 interface FontFamily {
   regular: string;
   medium: string;
@@ -46,7 +38,12 @@ export const COLORS: Color = {
   transparent: 'transparent',
   dangerous: '#d91e18',
 };
-export const SCREEN_NAMES: ScreenName = {
+export const SCREEN_NAMES = {
+  // Tab
+  ExploreTab: 'ExploreTab',
+  EventsTab: 'EventsTab',
+  MapTab: 'MapTab',
+  ProfileTab: 'ProfileTab',
   Main: 'Main',
   Home: 'HomeScreen',
   Login: 'LoginScreen',
@@ -54,6 +51,10 @@ export const SCREEN_NAMES: ScreenName = {
   SignUp: 'SignUpScreen',
   ForgotPassword: 'ForgotPasswordScreen',
   Verification: 'VerificationScreen',
+  AddNew: 'AddNewScreen',
+  Events: 'EventsScreen',
+  Profile: 'ProfileScreen',
+  Map: 'MapScreen',
 };
 export const SPACING: Spacing = {
   width: Dimensions.get('window').width,
