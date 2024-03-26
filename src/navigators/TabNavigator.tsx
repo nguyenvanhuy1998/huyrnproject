@@ -6,7 +6,7 @@ import {AddSquare, Calendar, Location, Profile} from 'iconsax-react-native';
 import React, {ReactNode} from 'react';
 import {Platform, View} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {TextComponent} from '../components';
+import {CircleComponent, TextComponent} from '../components';
 import {COLORS, SCREEN_NAMES} from '../constants';
 import {AddNewScreen} from '../screens';
 import {globalStyles} from '../styles';
@@ -25,6 +25,7 @@ const TabNavigator = () => {
           height: Platform.OS === 'ios' ? 88 : 68,
           justifyContent: 'center',
           alignItems: 'center',
+          backgroundColor: COLORS.white,
         },
         tabBarIcon: ({focused, color, size}) => {
           let icon: ReactNode;
@@ -39,21 +40,17 @@ const TabNavigator = () => {
               break;
             case SCREEN_NAMES.AddNew:
               icon = (
-                <View
-                  style={[
+                <CircleComponent
+                  size={52}
+                  onPress={() => {}}
+                  styles={[
                     globalStyles.shadow,
                     {
-                      width: 52,
-                      height: 52,
-                      borderRadius: 100,
-                      backgroundColor: COLORS.primary,
-                      alignItems: 'center',
-                      justifyContent: 'center',
                       marginTop: Platform.OS === 'ios' ? -50 : -60,
                     },
                   ]}>
                   <AddSquare size={24} color={COLORS.white} variant="Bold" />
-                </View>
+                </CircleComponent>
               );
               break;
             case SCREEN_NAMES.MapTab:

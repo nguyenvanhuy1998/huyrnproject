@@ -2,6 +2,7 @@ import {Dimensions} from 'react-native';
 
 interface Color {
   primary: string;
+  primary2: string;
   white: string;
   secondary: string;
   white_opacity_20: string;
@@ -13,6 +14,7 @@ interface Color {
   gray5: string;
   transparent: 'transparent';
   dangerous: string;
+  sun: string;
 }
 interface Spacing {
   width: number;
@@ -28,6 +30,7 @@ interface FontFamily {
 
 export const COLORS: Color = {
   primary: '#5669FF',
+  primary2: '#524ce0',
   secondary: '#3056f0',
   white: '#fff',
   white_opacity_20: 'rgba(255, 255, 255, 0.2)',
@@ -39,6 +42,7 @@ export const COLORS: Color = {
   gray5: '#D9D9D9',
   transparent: 'transparent',
   dangerous: '#d91e18',
+  sun: '#02E9FE',
 };
 export const SCREEN_NAMES = {
   // Tab
