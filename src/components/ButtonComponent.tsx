@@ -23,6 +23,7 @@ interface Props {
   iconFlex?: 'right' | 'left';
   textFont?: string;
   disabled?: boolean;
+  isShadow?: boolean;
 }
 const ButtonComponent = ({
   icon,
@@ -36,6 +37,7 @@ const ButtonComponent = ({
   iconFlex,
   textFont,
   disabled,
+  isShadow = true,
 }: Props) => {
   return type === 'primary' ? (
     <View
@@ -46,7 +48,7 @@ const ButtonComponent = ({
         disabled={disabled}
         style={[
           globalStyles.button,
-          globalStyles.shadow,
+          isShadow && globalStyles.shadow,
           {
             backgroundColor: backgroundColor
               ? backgroundColor

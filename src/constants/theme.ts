@@ -15,6 +15,8 @@ interface Color {
   transparent: 'transparent';
   dangerous: string;
   sun: string;
+  sun2: string;
+  sun2_opacity_20: string;
 }
 interface Spacing {
   width: number;
@@ -43,6 +45,8 @@ export const COLORS: Color = {
   transparent: 'transparent',
   dangerous: '#d91e18',
   sun: '#02E9FE',
+  sun2: '#00F8FF',
+  sun2_opacity_20: '#00F8FF33',
 };
 export const SCREEN_NAMES = {
   // Tab
