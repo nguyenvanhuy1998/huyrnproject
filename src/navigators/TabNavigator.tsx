@@ -14,6 +14,7 @@ import EventsNavigator from './EventsNavigator';
 import ExploreNavigator from './ExploreNavigator';
 import MapNavigator from './MapNavigator';
 import ProfileNavigator from './ProfileNavigator';
+import DrawerNavigator from './DrawerNavigator';
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => {

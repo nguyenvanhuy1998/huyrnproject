@@ -8,7 +8,7 @@ import {COLORS, FONT_FAMILY} from '../../constants';
 import {globalStyles} from '../../styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: any) => {
   return (
     <View style={[globalStyles.container]}>
       <StatusBar barStyle={'light-content'} />
@@ -22,7 +22,7 @@ const HomeScreen = () => {
           paddingHorizontal: 16,
         }}>
         <RowComponent>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
             <HambergerMenu size={24} color={COLORS.white} />
           </TouchableOpacity>
           <View style={[globalStyles.flex, {alignItems: 'center'}]}>
