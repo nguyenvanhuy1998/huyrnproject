@@ -1,10 +1,22 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react-native/no-inline-styles */
-import {ArrowDown2, HambergerMenu, Notification} from 'iconsax-react-native';
+import {
+  ArrowDown2,
+  HambergerMenu,
+  Notification,
+  SearchNormal,
+  Sort,
+} from 'iconsax-react-native';
 import React from 'react';
 import {Platform, StatusBar, TouchableOpacity, View} from 'react-native';
-import {CircleComponent, RowComponent, TextComponent} from '../../components';
-import {COLORS, FONT_FAMILY} from '../../constants';
+import {
+  CircleComponent,
+  RowComponent,
+  SpaceComponent,
+  TagComponent,
+  TextComponent,
+} from '../../components';
+import {COLORS, FONT_FAMILY, SCREEN_NAMES} from '../../constants';
 import {globalStyles} from '../../styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -63,6 +75,46 @@ const HomeScreen = ({navigation}: any) => {
               />
             </View>
           </CircleComponent>
+        </RowComponent>
+        <SpaceComponent height={20} />
+        <RowComponent>
+          <RowComponent
+            styles={globalStyles.flex}
+            onPress={() =>
+              navigation.navigate(SCREEN_NAMES.SearchEvents, {
+                isFilter: false,
+              })
+            }>
+            <SearchNormal color={COLORS.white} size={20} variant="TwoTone" />
+            <View
+              style={{
+                width: 1,
+                backgroundColor: COLORS.gray2,
+                height: 20,
+                marginHorizontal: 10,
+              }}
+            />
+            <TextComponent
+              text="Search..."
+              flex={1}
+              color={COLORS.gray2}
+              fontSize={16}
+            />
+          </RowComponent>
+          <TagComponent
+            onPress={() =>
+              navigation.navigate(SCREEN_NAMES.SearchEvents, {
+                isFilter: true,
+              })
+            }
+            bgColor={COLORS.primary3}
+            label="Filters"
+            icon={
+              <CircleComponent size={20} backgroundColor={COLORS.violet}>
+                <Sort size={16} color={COLORS.primary3} />
+              </CircleComponent>
+            }
+          />
         </RowComponent>
       </View>
       <View style={[globalStyles.flex]}></View>

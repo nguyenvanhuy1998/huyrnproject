@@ -3,6 +3,8 @@ import {Dimensions} from 'react-native';
 interface Color {
   primary: string;
   primary2: string;
+  primary3: string;
+  violet: string;
   white: string;
   secondary: string;
   white_opacity_20: string;
@@ -33,7 +35,10 @@ interface FontFamily {
 export const COLORS: Color = {
   primary: '#5669FF',
   primary2: '#524ce0',
+  primary3: '#5d56f3',
   secondary: '#3056f0',
+  violet: '#B1AEFA',
+
   white: '#fff',
   white_opacity_20: 'rgba(255, 255, 255, 0.2)',
   text: '#120D26',
@@ -65,6 +70,7 @@ export const SCREEN_NAMES = {
   Events: 'EventsScreen',
   Profile: 'ProfileScreen',
   Map: 'MapScreen',
+  SearchEvents: 'SearchEventsScreen',
 };
 export const SPACING: Spacing = {
   width: Dimensions.get('window').width,
